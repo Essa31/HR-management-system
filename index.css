@@ -13,14 +13,32 @@ header{
     height: 8rem;
     width: 8rem;
     margin: 0;
+    display: flex
+}
+nav{
+    display: flex
 }
 nav a{
+    justify-content: space-between;
+    color: antiquewhite;
    font:  1,6rem;
-   margin: 0 18rem;
+   margin: 0 12rem;
+  
 }
 #copyrigth{
-    background-color: black;
+    background-color: rgb(120, 30, 210);
     color: rgb(246, 244, 244);
     padding-left: 70ch;
    
+}
+main p{
+
+    font-size: larger;
+    padding: 3ch;
+    font-style: italic;
+    
+}
+footer{
+
+    padding-top: 6ch;
 }
