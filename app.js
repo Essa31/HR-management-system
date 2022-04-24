@@ -9,13 +9,18 @@ function Employee(employeeID,fullName,Department,Level,imageURL){
     this.imageURL=imageURL
     fullEmployee.push(this)
 }
-let Ghazi =new Employee(1000,"Ghazi Samer","Administration","Senior")
-let Lana = new Employee(1001,"Lana Ali","Finance","Senior")
-let Tamara = new Employee(1002,"Tamara Ayoub","Marketing","Senior")
-let Safi =new Employee(1003,"Safi Walid","Administration","Mid-Senior")
-let Omar=new Employee(1004,"Omar Zaid","Development","Senior")
-let Rana = new Employee(1005,"Rana Saleh","Development","Junior")
-let Hadi = new Employee(1006,"Hadi Ahmad","Finance","Mid-Senior")
+function idNumber() {
+    let val = Math.floor(1000 + Math.random() * 9000);
+    return val
+}
+
+let Ghazi =new Employee(idNumber(),"Ghazi Samer","Administration","Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Ghazi.jpg?raw=true")
+let Lana = new Employee(idNumber(),"Lana Ali","Finance","Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Lana.jpg?raw=true")
+let Tamara = new Employee(idNumber(),"Tamara Ayoub","Marketing","Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Tamara.jpg?raw=true")
+let Safi =new Employee(idNumber(),"Safi Walid","Administration","Mid-Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Safi.jpg?raw=true")
+let Omar=new Employee(idNumber(),"Omar Zaid","Development","Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Omar.jpg?raw=true")
+let Rana = new Employee(idNumber(),"Rana Saleh","Development","Junior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Rana.jpg?raw=true")
+let Hadi = new Employee(idNumber(),"Hadi Ahmad","Finance","Mid-Senior","https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Hadi.jpg?raw=true")
 
 Employee.prototype.Salary=function () {
     let max=0
@@ -47,9 +52,18 @@ Employee.prototype.netSalary=function(){
 Employee.prototype.render=function(){
     for (i=0;i<fullEmployee.length;i++){
         let item =fullEmployee[i]
+        document.write(`<div class="employee">
+
+    <img src=${item.imageURL}>
+
+        <p>Name: ${item.fullName} - ID: ${item.employeeID} </p>
 
 
-        document.write(`<p>${item.fullName} has a salary of  ${item.netSalary()} </p>`)
+        <p> Department:  ${item.Department} - Level ${item.Level} </p> 
+
+        <p>  ${item.netSalary()} </p>
+        </div>`
+        )
     }
 
     
@@ -60,5 +74,20 @@ Employee.prototype.render=function(){
 
 Ghazi.render()
 
+let form = document.createElementById("form")
+form.addEvenListLener('submit',handleSubmit);
+
+
+function handleSubmit (event){
+event.preventDefault()
+let name = event.target.fullName.value
+let Department =event.target.department.value
+let level = event.target.level.value
+let imageUrl =event.target.imageURL.value
+let newEmployee = new Employee(name,Department,level,imageUrl)
+newEmployee.render()
+
+
+}
 
 
