@@ -86,7 +86,7 @@ function handleSubmit (event){
     let Department =event.target.department.value
     let level = event.target.level.value
     let imageUrl =event.target.imageUrl.value
-    let newEmployee = new Employee(name,Department,level,imageUrl)
+    let newEmployee = new Employee(idNumber,name,Department,level,imageUrl)
     newEmployee.render()
     
 }
