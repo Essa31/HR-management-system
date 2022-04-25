@@ -48,6 +48,8 @@ footer{
     background-color: darkolivegreen;
     padding: 20ch ;
     margin: 20ch ;
+    border-radius: 40ch;
+    margin-left: 30ch;
 
 }
 .employee p{
@@ -61,7 +63,7 @@ footer{
    
     align-items: center;
     justify-content: center;
-    
+    margin-left: 75px;
     width: 50ch;
     
    
@@ -95,8 +97,11 @@ padding-left:  40ch;
 }
 .imageUrl input{
     padding-left:  25ch;
+    
 }
 #submit{
-    margin-left:  55ch;
+    margin-left:  70ch;
+    width: 70px;
+
 }
 

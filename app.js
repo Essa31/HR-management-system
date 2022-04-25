@@ -1,5 +1,5 @@
 let fullEmployee =[]
-
+let form = document.getElementById("form")
 function Employee(employeeID,fullName,Department,Level,imageURL){
 
     this.employeeID=employeeID
@@ -54,7 +54,8 @@ Employee.prototype.render=function(){
         let item =fullEmployee[i]
         document.write(`<div class="employee">
 
-    <img src=${item.imageURL}>
+    <img src=${item.imageURL}  width="50px">
+
 
         <p>Name: ${item.fullName} - ID: ${item.employeeID} </p>
 
@@ -72,22 +73,30 @@ Employee.prototype.render=function(){
     }
     
 
-Ghazi.render()
+    Ghazi.render()
 
-let form = document.createElementById("form")
-form.addEvenListLener('submit',handleSubmit);
 
+
+
+/*console.log(form)*/
 
 function handleSubmit (event){
-event.preventDefault()
-let name = event.target.fullName.value
-let Department =event.target.department.value
-let level = event.target.level.value
-let imageUrl =event.target.imageURL.value
-let newEmployee = new Employee(name,Department,level,imageUrl)
-newEmployee.render()
-
-
+    event.preventDefault()
+    let name = event.target.fullName.value
+    let Department =event.target.department.value
+    let level = event.target.level.value
+    let imageUrl =event.target.imageUrl.value
+    let newEmployee = new Employee(name,Department,level,imageUrl)
+    newEmployee.render()
+    
 }
+form.addEventListener('submit',handleSubmit);
+
+/*const element = document.getElementById("myBtn");
+element.addEventListener("click", myFunction);
+
+function myFunction() {
+  document.getElementById("demo").innerHTML = "Hello World";
+}*/
 
 
