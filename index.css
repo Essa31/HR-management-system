@@ -42,33 +42,9 @@ footer{
 
     padding-top: 6ch;
 }
-.employee{
-    align-items: center;
 
-    background-color: darkolivegreen;
-    padding: 20ch ;
-    margin: 20ch ;
-    border-radius: 40ch;
-    margin-left: 30ch;
+   
 
-}
-.employee p{
-    justify-content: center;
-    text-align: center;
-  
-    width: 80%;
-    
-}
-.employee img{
-   
-    align-items: center;
-    justify-content: center;
-    margin-left: 75px;
-    width: 50ch;
-    
-   
-   
-}
 form div{
     padding: 15px;
 }
@@ -105,3 +81,26 @@ padding-left:  40ch;
 
 }
 
+#employee{
+    align-items: center;
+
+    background-color: darkolivegreen;
+    padding: 20ch ;
+    margin: 20ch ;
+    border-radius: 40ch;
+    margin-left: 30ch;
+}
+#employee img{
+    align-items: center;
+    justify-content: center;
+    margin-left: 75px;
+    width: 50ch;
+}
+#employee p{
+    justify-content: center;
+    text-align: center;
+    color: bisque;
+  
+    width: 80%;
+    
+}
