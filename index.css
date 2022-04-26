@@ -104,4 +104,9 @@ padding-left:  40ch;
     width: 70px;
 
 }
-
+table, th, td {
+    padding: 15ch;
+    margin: 10ch;
+  border: 1px solid black;
+ 
+}
