@@ -106,17 +106,7 @@ Employee.prototype.render = function (){
     let Department = document.createElement("p")
     Department.textContent=`${this.Salary()}`
     employeeData.appendChild(Department)
-/*
-    let level = document.createElement("p")
-    level.textContent=this.level
-    employeeData.appendChild(level)
 
-    let Salary = document.createElement("p")
-    
-     Salary.textContent=this.Salary()
-    
-    employeeData.appendChild(Salary)
-*/
 }
 
 for (i = 0; i < fullEmployee.length; i++) {
