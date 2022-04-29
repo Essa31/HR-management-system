@@ -42,33 +42,33 @@ footer{
 
     padding-top: 6ch;
 }
-.employee{
+#employee{
     align-items: center;
 
     background-color: darkolivegreen;
     padding: 20ch ;
-    margin: 20ch ;
+    margin: 30ch ;
     border-radius: 40ch;
     margin-left: 30ch;
-
 }
-.employee p{
-    justify-content: center;
-    text-align: center;
-  
-    width: 80%;
-    
-}
-.employee img{
-   
+#employee img{
     align-items: center;
     justify-content: center;
     margin-left: 75px;
     width: 50ch;
+}
+#employee p{
+    justify-content: center;
+    text-align: center;
+    color: bisque;
+  
+    width: 80%;
+    
+}
     
    
    
-}
+
 form div{
     padding: 15px;
 }
@@ -104,4 +104,9 @@ padding-left:  40ch;
     width: 70px;
 
 }
-
+table, th, td {
+    padding: 15ch;
+    margin: 10ch;
+  border: 1px solid black;
+ 
+}

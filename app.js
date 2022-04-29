@@ -1,9 +1,10 @@
 'use strict';
 let fullEmployee = [];
 let form = document.getElementById("form");
-let tableContainer = document.getElementById("root");
-let tableEl = document.createElement("table");
-tableContainer.appendChild(tableEl);
+let employeeData=document.getElementById("employee")
+
+
+
 function Employee(employeeID, fullName, Department, Level, imageURL) {
   this.employeeID = employeeID;
   this.fullName = fullName;
@@ -90,99 +91,135 @@ Employee.prototype.netSalary = function () {
   let Ns = this.Salary() - tax;
   return Ns;
 };
-Employee.prototype.averageSalary = function (nameDepartment) {
-    
-    let salaryAdministration = 0;
-    let salaryMarketing = 0;
-    let salaryDevelopment = 0;
-    let salaryFinance = 0;
-    for (let i = 0; i < fullEmployee.length; i++) {
-      let item = fullEmployee[i];
-  
-      if (item.Department == "Administration") {
-        salaryAdministration = salaryAdministration + item.netSalary();
-      } else if (item.Department == "Marketing") {
-        salaryMarketing = salaryMarketing + item.netSalary();
-      } else if (item.Department == "Development") {
-        salaryDevelopment = salaryDevelopment + item.netSalary();
-      } else if (item.Department == "Finance") {
-        salaryFinance = salaryFinance + item.netSalary();
-      }
-    }
-    if (nameDepartment == "Administration") {
-      return NumDpEp(nameDepartment) / salaryAdministration;
-    } else if (nameDepartment == "Marketing") {
-      return NumDpEp(nameDepartment) / salaryMarketing;
-    } else if (nameDepartment == "Development") {
-      return NumDpEp(nameDepartment) / salaryDevelopment;
-    } else if (nameDepartment == "Finance") {
-      return NumDpEp(nameDepartment) / salaryFinance;
-    }
-  };
-Employee.prototype.render = function () {
-  for (let i = 0; i < fullEmployee.length; i++) {
-    let item = fullEmployee[i];
-    document.write(`<div class="employee">
-
-    <img src=${item.imageURL}  width="50px">
-
-
-        <p>Name: ${item.fullName} - ID: ${item.employeeID} </p>
-
-
-        <p> Department:  ${item.Department} - Level ${item.Level} </p> 
-
-        <p>  ${item.netSalary()} </p>
-        </div>`);
-  }
-};
-
 Employee.prototype.NumDpEp = function (nameDepartment) {
    
-    let contAdministration = 0;
-    let contMarketing = 0;
-    let contDevelopment = 0;
-    let contFinance = 0;
-    for (let i = 0; i < fullEmployee.length; i++) {
-        let item = fullEmployee[i];
-     
-      if (item.Department == "Administration") {
-        contAdministration = contAdministration + 1;
-      } else if (item.Department == "Marketing") {
-        contMarketing = contMarketing + 1;
-      } else if (item.Department == "Development") {
-        contDevelopment = contDevelopment + 1;
-      } else if (item.Department == "Finance") {
-        contFinance = contFinance + 1;
-      }
+  let contAdministration = 0;
+  let contMarketing = 0;
+  let contDevelopment = 0;
+  let contFinance = 0;
+  for (let i = 0; i < fullEmployee.length; i++) {
+      let item = fullEmployee[i];
+   
+    if (item.Department == "Administration") {
+      contAdministration = contAdministration + 1;
+    } else if (item.Department == "Marketing") {
+      contMarketing = contMarketing + 1;
+    } else if (item.Department == "Development") {
+      contDevelopment = contDevelopment + 1;
+    } else if (item.Department == "Finance") {
+      contFinance = contFinance + 1;
     }
-    if (nameDepartment == "Administration") {
-      return contAdministration;
-    } else if (nameDepartment == "Marketing") {
-      return contMarketing;
-    } else if (nameDepartment == "Development") {
-      return contDevelopment;
-    } else if (nameDepartment == "Finance") {
-      return contFinance;
+  }
+  if (nameDepartment == "Administration") {
+    return contAdministration;
+  } else if (nameDepartment == "Marketing") {
+    return contMarketing;
+  } else if (nameDepartment == "Development") {
+    return contDevelopment;
+  } else if (nameDepartment == "Finance") {
+    return contFinance;
+  }
+};
+// console.log( Ghazi.NumDpEp("Development"))
+
+
+Employee.prototype.totalSalary = function (nameDepartment) {
+  let salaryAdministration = 0;
+  let salaryMarketing = 0;
+  let salaryDevelopment = 0;
+  let salaryFinance = 0;
+  for (let i = 0; i < fullEmployee.length; i++) {
+    let item = fullEmployee[i];
+
+    if (item.Department == "Administration") {
+      salaryAdministration = salaryAdministration + item.netSalary();
+    } else if (item.Department == "Marketing") {
+      salaryMarketing = salaryMarketing + item.netSalary();
+    } else if (item.Department == "Development") {
+      salaryDevelopment = salaryDevelopment + item.netSalary();
+    } else if (item.Department == "Finance") {
+      salaryFinance = salaryFinance + item.netSalary();
     }
-  };
-Employee.prototype.renderTable = function () {
-    let trEl = document.createElement("tr");
-    tableEl.appendChild(trEl);
+  }
+  if (nameDepartment == "Administration") {
+    return   salaryAdministration 
+  } else if (nameDepartment == "Marketing") {
+    return salaryMarketing 
+  } else if (nameDepartment == "Development") {
+    return   salaryDevelopment 
+  } else if (nameDepartment == "Finance") {
+    return salaryFinance ;
+  }
+
+
+
+
+
+
+
+
+}
+Employee.prototype.averageSalary = function (nameDepartment) {
   
-    let tdEl1 = document.createElement("td");
-    trEl.appendChild(tdEl1);
-    tdEl1.textContent = this.Department;
-  
-    let tdEl2 = document.createElement("td");
-    trEl.appendChild(tdEl2);
-    tdEl2.textContent = this.NumDpEp(this.Department);
-  
-    let tdEl3 = document.createElement("td");
-    trEl.appendChild(tdEl3);
-    tdEl3.textContent = this.averageSalary(this.Department);
-  };
-Ghazi.render();
+  let salaryAdministration = 0;
+  let salaryMarketing = 0;
+  let salaryDevelopment = 0;
+  let salaryFinance = 0;
+  for (let i = 0; i < fullEmployee.length; i++) {
+    let item = fullEmployee[i];
+
+    if (item.Department == "Administration") {
+      salaryAdministration = salaryAdministration + item.netSalary();
+    } else if (item.Department == "Marketing") {
+      salaryMarketing = salaryMarketing + item.netSalary();
+    } else if (item.Department == "Development") {
+      salaryDevelopment = salaryDevelopment + item.netSalary();
+    } else if (item.Department == "Finance") {
+      salaryFinance = salaryFinance + item.netSalary();
+    }
+  }
+  if (nameDepartment == "Administration") {
+    return   salaryAdministration / this.NumDpEp(nameDepartment);
+  } else if (nameDepartment == "Marketing") {
+    return salaryMarketing / this.NumDpEp(nameDepartment) ;
+  } else if (nameDepartment == "Development") {
+    return   salaryDevelopment /this.NumDpEp(nameDepartment);
+  } else if (nameDepartment == "Finance") {
+    return salaryFinance /this.NumDpEp(nameDepartment)  ;
+  }
+};
+ console.log( Ghazi.averageSalary("Development"))
+ console.log("haxavv")
+
+Employee.prototype.render = function (){
+
+  let Img = document.createElement("img")
+  Img.setAttribute("src",this.imageURL)
+  employeeData.appendChild(Img)
+
+
+  let fullName = document.createElement("p")
+  fullName.textContent=`Name: ${this.fullName} - ID : ${idNumber()}`
+  employeeData.appendChild(fullName)
+
+  let id = document.createElement("p")
+  id.textContent=`Department:${this.Department} -level:${this.level} `
+ 
+  employeeData.appendChild(id)
+
+  let Department = document.createElement("p")
+  Department.textContent=`${this.Salary()}`
+  employeeData.appendChild(Department)
+
+}
+
+for (let i = 0; i < fullEmployee.length; i++) {
+  let item = fullEmployee[i];
+  item.render()
+}
+
+
+
 
 /*console.log(form)*/
 
@@ -194,10 +231,10 @@ function handleSubmit(event) {
   let imageUrl = event.target.imageUrl.value;
   let newEmployee = new Employee(idNumber(), name, Department, level, imageUrl);
   newEmployee.render();
-  newEmployee.renderTable();
+  console.log("helllo");
   saveData(fullEmployee);
 }
-// form.addEventListener('submit',handleSubmit);
+form.addEventListener('submit',handleSubmit);
 
 /*const element = document.getElementById("myBtn");
 element.addEventListener("click", myFunction);
@@ -208,33 +245,37 @@ function myFunction() {
 function saveData(data) {
   let stringObj = JSON.stringify(data);
   localStorage.setItem("employee", stringObj);
+  console.log(stringObj);
 }
-saveData(fullEmployee);
 function getData() {
   let retrievedData = localStorage.getItem("employee");
-  console.log(retrievedData);
+  // console.log(retrievedData);
   let arrData = JSON.parse(retrievedData);
-  console.log(arrData);
-  fullEmployee = [];
+  // console.log(arrData);
+  if(arrData==null){
   for (let i = 0; i < arrData.length; i++) {
-    new Employee(
-      idNumber(),
-      arrData[i].name,
-      arrData[i].Department,
-      arrData[i].Level,
-      arrData[i].imageURL
-    );
+    element = new Employee(idNumber(),arrData[i].name ,arrData[i].Department,arrData[i].Level,arrData[i].imageURL);
+  
+  
+  
+  element.render()
   }
-
-  for (let i = 0; i < fullEmployee.length; i++) {
-    fullEmployee[i].render();
-    fullEmployee[i].renderTable();
   }
+ 
 }
 getData();
-
-
-
-// for (let i = 0; i < fullEmployee.length; i++) {
-//     fullEmployee[i].renderTable();
-// }
+function savefunction(key,data) {
+  let stringObj = JSON.stringify(data);
+  localStorage.setItem(`${key}`, `${stringObj}`);
+  
+}
+savefunction("averageSalaryAdministration",Ghazi.averageSalary("Administration") );
+savefunction("averageSalaryMarketing",Ghazi.averageSalary("Marketing") );
+savefunction("averageSalaryDevelopment",Ghazi.averageSalary("Development") );
+savefunction("averageSalaryFinance",Ghazi.averageSalary("Finance") );
+savefunction("totalSalaryAdministration",Ghazi.totalSalary("Administration"))
+savefunction("totalSalaryMarketing",Ghazi.totalSalary("Marketing"))
+savefunction("totalSalaryDevelopment",Ghazi.totalSalary("Development"))
+savefunction("totalSalaryFinance",Ghazi.totalSalary("Finance"))
+savefunction("SumtotalSalary",Ghazi.totalSalary("Finance") + Ghazi.totalSalary("Administration")+Ghazi.totalSalary("Marketing")+Ghazi.totalSalary("Development"))
+savefunction("sumAverageSalary",Ghazi.averageSalary("Finance")+ Ghazi.averageSalary("Administration") + Ghazi.averageSalary("Marketing") +Ghazi.averageSalary("Development"))
