@@ -3,7 +3,9 @@ let fullEmployee = [];
 let form = document.getElementById("form");
 let employeeData=document.getElementById("employee")
 
-
+/*let retrievedData1 = localStorage.getItem("employee");
+let arrData1 = JSON.parse(retrievedData1);
+fullEmployee.push(arrData1)*/
 
 function Employee(employeeID, fullName, Department, Level, imageURL) {
   this.employeeID = employeeID;
@@ -67,6 +69,7 @@ let Hadi = new Employee(
   "Mid-Senior",
   "https://github.com/LTUC/prep-course-py-02/blob/main/Day08/Task/assets/Hadi.jpg?raw=true"
 );
+// console.log(fullEmployee);
 
 Employee.prototype.Salary = function () {
   let max = 0;
@@ -130,9 +133,11 @@ Employee.prototype.totalSalary = function (nameDepartment) {
   let salaryFinance = 0;
   for (let i = 0; i < fullEmployee.length; i++) {
     let item = fullEmployee[i];
+console.log(item,"item")
 
     if (item.Department == "Administration") {
       salaryAdministration = salaryAdministration + item.netSalary();
+
     } else if (item.Department == "Marketing") {
       salaryMarketing = salaryMarketing + item.netSalary();
     } else if (item.Department == "Development") {
@@ -188,8 +193,8 @@ Employee.prototype.averageSalary = function (nameDepartment) {
     return salaryFinance /this.NumDpEp(nameDepartment)  ;
   }
 };
- console.log( Ghazi.averageSalary("Development"))
- console.log("haxavv")
+//  console.log( Ghazi.averageSalary("Development"))
+//  console.log("haxavv")
 
 Employee.prototype.render = function (){
 
@@ -210,31 +215,37 @@ Employee.prototype.render = function (){
   let Department = document.createElement("p")
   Department.textContent=`${this.Salary()}`
   employeeData.appendChild(Department)
+  
 
 }
 
-for (let i = 0; i < fullEmployee.length; i++) {
-  let item = fullEmployee[i];
-  item.render()
+// for (let i = 0; i < fullEmployee.length; i++) {
+//   let item = fullEmployee[i];
+//   item.render()
+// }
+
+
+function saveData(data) {
+  let stringObj = JSON.stringify(data);
+  localStorage.setItem("employee", stringObj);
+  console.log(fullEmployee);
 }
-
-
-
 
 /*console.log(form)*/
-
+form.addEventListener('submit',handleSubmit);
 function handleSubmit(event) {
   event.preventDefault();
+
   let name = event.target.fullName.value;
   let Department = event.target.department.value;
   let level = event.target.level.value;
   let imageUrl = event.target.imageUrl.value;
   let newEmployee = new Employee(idNumber(), name, Department, level, imageUrl);
-  newEmployee.render();
-  console.log("helllo");
+  form.reset();
   saveData(fullEmployee);
+  newEmployee.render();
 }
-form.addEventListener('submit',handleSubmit);
+
 
 /*const element = document.getElementById("myBtn");
 element.addEventListener("click", myFunction);
@@ -242,33 +253,35 @@ element.addEventListener("click", myFunction);
 function myFunction() {
   document.getElementById("demo").innerHTML = "Hello World";
 }*/
-function saveData(data) {
-  let stringObj = JSON.stringify(data);
-  localStorage.setItem("employee", stringObj);
-  console.log(stringObj);
-}
+
 function getData() {
   let retrievedData = localStorage.getItem("employee");
   // console.log(retrievedData);
   let arrData = JSON.parse(retrievedData);
   // console.log(arrData);
-  if(arrData==null){
+  if(arrData!=null){
+    
+
   for (let i = 0; i < arrData.length; i++) {
-    element = new Employee(idNumber(),arrData[i].name ,arrData[i].Department,arrData[i].Level,arrData[i].imageURL);
+    let employee= new Employee(idNumber(),arrData[i].name ,arrData[i].Department,arrData[i].Level,arrData[i].imageURL);
+  console.log(employee)
+    employee.render()
   
   
-  
-  element.render()
   }
   }
- 
+  // for (let i = 0; i < fullEmployee.length; i++) {
+  //   let item = fullEmployee[i];
+  //   item.render()
+  // }
 }
-getData();
+getData()
 function savefunction(key,data) {
   let stringObj = JSON.stringify(data);
   localStorage.setItem(`${key}`, `${stringObj}`);
   
 }
+
 savefunction("averageSalaryAdministration",Ghazi.averageSalary("Administration") );
 savefunction("averageSalaryMarketing",Ghazi.averageSalary("Marketing") );
 savefunction("averageSalaryDevelopment",Ghazi.averageSalary("Development") );
@@ -279,3 +292,4 @@ savefunction("totalSalaryDevelopment",Ghazi.totalSalary("Development"))
 savefunction("totalSalaryFinance",Ghazi.totalSalary("Finance"))
 savefunction("SumtotalSalary",Ghazi.totalSalary("Finance") + Ghazi.totalSalary("Administration")+Ghazi.totalSalary("Marketing")+Ghazi.totalSalary("Development"))
 savefunction("sumAverageSalary",Ghazi.averageSalary("Finance")+ Ghazi.averageSalary("Administration") + Ghazi.averageSalary("Marketing") +Ghazi.averageSalary("Development"))
+getData()
